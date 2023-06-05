@@ -58,3 +58,5 @@ The proxy pool is defined as `class proxypool`` and can be utilized by the serve
 ## Reference
 
 <https://cuiqingcai.com/7048.html>
+
+<https://github.com/Python3WebSpider/ProxyPool>
