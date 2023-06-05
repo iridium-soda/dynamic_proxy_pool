@@ -54,3 +54,7 @@ The proxy pool is defined as `class proxypool`` and can be utilized by the serve
 - 对可用代理做一个排序，每次取代理池中可用且有效期剩余最长的那个
 - 考虑做一个定时任务？在有效时间低于某个门限时间的时候将其剔除出代理池
 - 考虑到多线程对pool的不确定性操作,应该限定同时只处理一个连接.大概?
+
+## Reference
+
+<https://cuiqingcai.com/7048.html>
