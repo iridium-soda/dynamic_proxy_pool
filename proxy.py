@@ -21,7 +21,7 @@ class proxypool(object):
         
         with open(KEY, "r") as k:
             # Read linkss
-            sec = k.read()
+            sec = json.load(k)
             self.url = sec["extract_link"]
             self.check=sec["check_link"]
             k.close()
@@ -51,7 +51,7 @@ class proxypool(object):
         """
         Sort pool by lifespan
         """
-        self.pool.sort(key=lambda x: x[2], reverse=True)
+        self.pool.sort(key=lambda x: x[-1], reverse=True)
 
     def __get_proxy_list(self)->list:
         """
@@ -69,8 +69,8 @@ class proxypool(object):
                 return []
 
             # Parse IP list
-            count=data["count"]
-            plist=data["proxy_list"]
+            count=data["data"]["count"]
+            plist=data["data"]["proxy_list"]
             res=[]
             for r in plist:
                 # Parse each list
