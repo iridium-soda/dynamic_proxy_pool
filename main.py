@@ -23,12 +23,24 @@ def process_request(req:dict)->dict:
     try:
         resp=dict()
         if req["type"]=="get":
-            pass # TODO: calls get_a_proxy(); hasnot implemented yet
+            addr=pp.extract_proxy()# A string like "ip:port"
+            if not addr:
+                logging.exception("Failed to get a vaild addr")
+            resp["code"]=200
+            resp["addr"]=addr
+        elif req["type"]=="report": # Report the link is invaild
+            pp.handle_error_report(req["addr"])
+            addr=pp.extract_proxy()# A string like "ip:port"
+            if not addr:
+                logging.exception("Failed to get a vaild addr")
+            resp["code"]=200
+            resp["addr"]=addr
+        
         
     except Exception as e:
         logging.exception(e)
         return dict()
-    
+    return resp
 if __name__=="__main__":
     # Read config
     """
